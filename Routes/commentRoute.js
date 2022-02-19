@@ -1,6 +1,6 @@
 const checkAllowance=require('../Controllers/Auth/checkAllowance')
 const {Router} = require('express');
-const {HandleGetComments,HandleDeleteComment,HandlePostComment} = require('../Controllers/comments/CommentsController');
+const {HandleGetComments,HandleDeleteComment,HandlePostComment} = require('../Controllers/comments/commentsController');
 
 const commentRouter = Router();
 
