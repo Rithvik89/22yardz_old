@@ -1,0 +1,63 @@
+get http://localhost:1337/register
+
+###
+post http://localhost:1337/register
+Content-Type: application/json
+
+{
+    "username": "swagr",
+    "password": "swagru554",
+    "email_id": "swagru..."
+}
+
+###
+post http://localhost:1337/login
+Content-Type: application/json
+
+{
+    "username":"rithvik",
+    "password":"rithvik89"
+}
+
+###
+get http://localhost:1337/logout
+
+###
+post http://localhost:1337/feed
+Content-Type: application/json
+
+{
+    "content":"England's umpteenth batting collapse in Hobart and their meek concession of the series also kind of left their victors a little unsure of their own supremacy"
+}
+
+###
+get http://localhost:1337/feed
+
+###
+get http://localhost:1337/feed/11
+
+
+###
+post http://localhost:1337/like
+
+###
+get http://localhost:1337/network
+
+###
+post http://localhost:1337/network/pending-connection
+Content-Type: application/json
+
+{
+    "celebrity":1
+}
+
+###
+post http://localhost:1337/network/new-connection
+Content-Type: application/json
+
+{
+    "fan":2
+}
+
+
+
