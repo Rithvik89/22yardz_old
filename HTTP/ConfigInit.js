@@ -26,7 +26,7 @@ const Conf = {
   primaryInfo: {
     isDevMode: !((getConf("NODE_ENV")?.getString() || "") === "production"),
     forWeb: getConf("IS_WEB")?.getBoolean() || false,
-    serverPort: process.env.PORT || 8080,
+    serverPort: process.env.PORT || 1337,
   },
   connectivity: {
     redisPort: getConf("REDIS_PORT")?.getNumber() || 6379,
