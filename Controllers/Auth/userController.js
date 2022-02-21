@@ -44,6 +44,7 @@ function HandleUserLogin(req,res,next) {
 }
 
 async function HandleUserLogout(req, res, next) {
+  console.log("Into Handle user LogOut")
   res.clearCookie('__AT__');
   res.clearCookie('__RT__');
   checkIfLogin(req.cookies.__RT__)
