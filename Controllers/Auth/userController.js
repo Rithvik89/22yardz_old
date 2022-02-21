@@ -51,7 +51,10 @@ async function HandleUserLogout(req, res, next) {
     .then((userData) => {
      performLogout(req.cookies.__RT__,userData)
         .then(
-          () => console.log("User Logged out")
+          () => {
+            res.status(200)
+            console.log("User Logged out")
+          }
         )
         .catch((err) => {
           console.log(err)
