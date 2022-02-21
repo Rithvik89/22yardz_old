@@ -21,6 +21,7 @@ function createTables(req,res){
         created_at date NOT NULL,
         comments INT DEFAULT 0,
         likes INT DEFAULT 0,
+        image VARCHAR(100) NULL,
         shares INT DEFAULT 0,
         PRIMARY KEY (post_id),
         FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
