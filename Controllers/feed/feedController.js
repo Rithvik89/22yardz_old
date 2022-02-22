@@ -14,7 +14,7 @@ async function HandleAddUserPost(req,res,next){
          console.log(user_id,content,date)
          try{
             await createPost(user_id,content,date)
-            res.send("Post created successfully")
+            res.send({message:"Post created successfully"})
          }
          catch(err){
             err.code=501

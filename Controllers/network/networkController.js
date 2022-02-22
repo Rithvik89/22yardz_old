@@ -21,8 +21,8 @@ async function ViewNetworkSection(req,res,next){
 
 async function PendingRequest(req,res,next){
      const {user_id}=req.userData
-     const {celebrity}=req.body
-     console.log(typeof(celebrity))
+     let {celebrity}=req.body
+     celebrity=parseInt(celebrity)
      try{
         await RequestConnection(user_id,celebrity);
         res.send("request sent Successfully")
