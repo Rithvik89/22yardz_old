@@ -35,8 +35,8 @@ async function PendingRequest(req,res,next){
 
 async function NewConnectionMade(req,res,next){
     const {user_id}=req.userData
-    const {fan}=req.body
-
+    let {fan}=req.body
+    fan=parseInt(fan)
     try{
         // Accept the connection...
        await AcceptConnection(fan,user_id);
