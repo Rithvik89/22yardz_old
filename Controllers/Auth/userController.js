@@ -12,13 +12,14 @@ async function HandleUserRegister(req, res,next) {
       if (result===undefined) {
         try {
           await CreateUser(username, password, email_id,date);
-          res.send("Registered successfully");
+          res.send({message:"Registered successfully"});
         } catch (err) {
           next(err);
         }
       } else {
-          const err = new Error("User already exits");
-          err.code = 404;
+          console.log("iam already in db")
+          const err = new Error("Credintials already exits");
+          err.code = 400;
           next(err);
       }
     })
@@ -29,13 +30,14 @@ async function HandleUserRegister(req, res,next) {
 
 function HandleUserLogin(req,res,next) {
   checkIfLogin(req.cookies.__RT__)
-    .then((userData) => {
-      res.json(userData);
+    .then((token) => {
+      res.send({token})
     })
     .catch((err) => {
       performLogin(res,req.body.username, req.body.password) 
-        .then( (userData) => {
-          res.status(200).json(userData);
+        .then( (token) => {
+          res.status(200);
+          res.send({token});
         })
         .catch((err) => {
           next(err);
@@ -54,7 +56,7 @@ async function HandleUserLogout(req, res, next) {
      performLogout(req.cookies.__RT__,userData)
         .then(
           () => {
-            res.send("Logged out successfully")
+            res.send({message:"Logged out successfully"})
             console.log("User Logged out")
           }
         )

@@ -20,7 +20,7 @@ function checkIfLogin(refreshToken) {
         const isBlacklisted = await KVGet(refreshToken);
 
         if(isBlacklisted){
-          resolve(payload)
+          resolve(refreshToken)
         }
         else{
           var err = new Error("Unauthorized");
@@ -54,8 +54,8 @@ function performLogin(res,username, password) {
               httpOnly: true,
               sameSite: 'strict'
             })
-
-            resolve(data);
+            const {refreshToken}  =tokens;
+            resolve(refreshToken);
 
           } catch (err) {
             reject(err);
