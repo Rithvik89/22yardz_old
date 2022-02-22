@@ -16,11 +16,11 @@ const _query={
             select fan from pendingconnections where celebrity=(?)
             union
             select celebrity from pendingconnections where fan=(?))`,
-    InitiateConnection:`INSERT INTO pendingConnections (fan,celebrity)
+    InitiateConnection:`INSERT INTO pendingconnections (fan,celebrity)
      VALUES (?,?);`,
     AcceptConnection:`INSERT INTO connections (fan,celebrity)
     VALUES (?,?);`,
-    DropConnection:`DELETE from pendingConnections WHERE fan=(?) AND celebrity=(?);`
+    DropConnection:`DELETE from pendingconnections WHERE fan=(?) AND celebrity=(?);`
 }
 
 // defining function...
