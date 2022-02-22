@@ -2,12 +2,16 @@ const express = require('express');
 const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
 const bodyParser=require('body-parser')
+const cors = require('cors')
+
 
 
 function ServerInit(conf) {
     const app = express();
+    app.use(cors())
 
     app.use(xss());
+    app.use
 
     app.use((req, res, next) => {
         res.setHeader("X-Powered-By", "Java Spring");
