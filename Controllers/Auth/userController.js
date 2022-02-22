@@ -5,6 +5,7 @@ const {
 const { checkIfLogin, performLogin,performLogout} = require("../../Services/Auth/LoginService");
 
 async function HandleUserRegister(req, res,next) {
+  console.log(req);
   console.log(req.body);
   const { username, password, email_id } = req.body;
   const date=new Date()
