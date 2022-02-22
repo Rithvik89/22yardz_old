@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const AT_DURATION = {
-    msformat : 1000*60*15,
+    msformat : 1000*60*1,
     AT_SECRET_KEY:"BWEF&*hbiy&(&*)njhinu"
 };
 
