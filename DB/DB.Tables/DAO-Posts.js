@@ -9,7 +9,7 @@ const _query = {
     GetPostById: `SELECT * FROM posts WHERE post_id=?`,
     Delete: `DELETE FROM posts WHERE post_id=?`,
     Update: `UPDATE posts SET content=? WHERE post_id = ?`,
-    GetFeed: `SELECT posts.post_id, posts.user_id, posts.content, posts.created_at, posts.likes FROM posts  INNER JOIN events ON posts.post_id = events.post_id WHERE post_id in (SELECT celebrity FROM connections WHERE fan = ?) LIMIT 20 OFFSET ? ORDER BY events.created_at DESC `
+    GetFeed: `SELECT posts.post_id, posts.user_id, posts.content, posts.created_at, posts.likes FROM posts  INNER JOIN events ON posts.post_id = events.post_id WHERE post_id in (SELECT celebrity FROM connections WHERE fan = ?)  `
 }
 
 // defining functions 
@@ -53,7 +53,7 @@ function fetchFeed(user_id, offset) {
             reject(err);
         }
         try {
-            var results = await QueryAll(_query.GetFeed, [user_id, offset]);
+            var results = await QueryAll(_query.GetFeed, [user_id]);
             resolve(results);
         } catch (err) {
             reject(err);
@@ -99,3 +99,7 @@ module.exports = {
     createPost,
     updatePostById
 }
+
+
+
+// ORDER BY events.created_at DESC
