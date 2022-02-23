@@ -8,10 +8,7 @@ const cors = require('cors')
 
 function ServerInit(conf) {
     const app = express();
-    app.use(cors({
-        credentials: true,
-        allowedHeaders:'Content-Type,Authorization'
-    }))
+    app.use(cors())
     
 
     app.use(xss());

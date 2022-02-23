@@ -1,4 +1,3 @@
-get http://localhost:1337/register
 
 ###
 post http://localhost:1337/register
