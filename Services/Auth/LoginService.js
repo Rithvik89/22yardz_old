@@ -46,12 +46,12 @@ function performLogin(res,username, password) {
             const tokens = await signAllTokens(data);
             res.cookie('__AT__', tokens.accessToken, {
               maxAge: AT_DURATION.msformat,
-                secure: true 
+               sameSite: 'none', secure: true 
 
             })
             res.cookie('__RT__', tokens.refreshToken, {
               maxAge: RT_DURATION.msformat,
-               secure: true 
+              sameSite: 'none', secure: true 
 
             })
             const {refreshToken}  =tokens;
