@@ -6,6 +6,6 @@ const authRouter = Router();
 
 authRouter.post('/register',HandleUserRegister);
 authRouter.post('/login',HandleUserLogin );
-authRouter.get('/logout',HandleUserLogout );
+authRouter.post('/logout',HandleUserLogout );
 
 module.exports = authRouter;
