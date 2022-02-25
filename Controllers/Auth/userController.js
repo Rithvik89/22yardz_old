@@ -12,7 +12,14 @@ async function HandleUserRegister(req, res,next) {
       if (result===undefined) {
         try {
           await CreateUser(username, password, email_id,date);
-          res.send({message:"Registered successfully"});
+        performLogin(res,req.body.username, req.body.password) 
+          .then( (token) => {
+            res.status(200);
+            res.send({token});
+          })
+          .catch((err) => {
+            next(err);
+          })
         } catch (err) {
           next(err);
         }
