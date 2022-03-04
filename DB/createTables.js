@@ -68,7 +68,17 @@ function createTables(req,res){
         FOREIGN KEY (fan) REFERENCES users(user_id) ON DELETE CASCADE,
         FOREIGN KEY (celebrity) REFERENCES users(user_id) ON DELETE CASCADE
     );`
-    
+    const createDeclineConnectionTableQuery=`CREATE TABLE IF NOT EXISTS declineConnections (
+        user INT NOT NULL,
+        enemy INT NOT NULL,
+        CONSTRAINT followkey UNIQUE (user, enemy)
+    );`
+    const createDeclineSuggestionsTableQuery=`CREATE TABLE IF NOT EXISTS declineSuggestions (
+        user INT NOT NULL,
+        enemy INT NOT NULL,
+        CONSTRAINT followkey UNIQUE (user, enemy)
+    );`
+
     mysql_pool.query(createUserTableQuery,(error,result,field)=>{
         if(error) console.log(error);
     })
@@ -94,6 +104,13 @@ function createTables(req,res){
     })
 
     mysql_pool.query(createCommentsTableQuery,(error,result,field)=>{
+        if(error) console.log(error);
+    })
+
+    mysql_pool.query(createDeclineConnectionTableQuery,(error,result,field)=>{
+        if(error) console.log(error);
+    })
+    mysql_pool.query(createDeclineSuggestionsTableQuery,(error,result,field)=>{
         if(error) console.log(error);
     })
 }

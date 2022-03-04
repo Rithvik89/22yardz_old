@@ -10,6 +10,7 @@ const {
 
 
 function checkAllowance(req, res, next) {
+    console.log(req.cookies)
     if (req.cookies === undefined) {
         // checking if there is no cookie
         var err = new Error("Not Authorized");
@@ -46,13 +47,13 @@ function checkAllowance(req, res, next) {
                     const tokens = await signAllTokens(data);
                     res.cookie("__AT__", tokens.accessToken, {
                         maxAge: AT_DURATION.msformat,
-                        httpOnly: true,
-                        sameSite: "strict",
+                        // httpOnly: true,
+                        // sameSite: "strict",
                     })
                     res.cookie("__RT__", tokens.refreshToken, {
                         maxAge: RT_DURATION.msformat,
-                        httpOnly: true,
-                        sameSite: 'strict'
+                        // httpOnly: true,
+                        // sameSite: 'strict'
                     })
                     req.userData = data
                     next()

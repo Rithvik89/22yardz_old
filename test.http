@@ -14,8 +14,8 @@ post http://localhost:1337/login
 Content-Type: application/json
 
 {
-    "username":"hayat",
-    "password":"hayat554"
+    "username":"rithvik345",
+    "password":"rithvik453"
 }
 
 ###
@@ -55,8 +55,20 @@ post http://localhost:1337/network/new-connection
 Content-Type: application/json
 
 {
-    "fan":2
+    "fan":6
 }
+
+###
+get http://localhost:1337/network/my-connections
+
+###
+post http://localhost:1337/network/decline-connection
+Content-Type: application/json
+
+{
+    "enemy":2
+}
+
 
 
 
