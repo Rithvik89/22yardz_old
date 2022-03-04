@@ -10,7 +10,7 @@ const {
 
 
 function checkAllowance(req, res, next) {
-    console.log(cookies);
+    console.log("cookies");
     console.log(req.cookies);
     if (req.cookies === undefined) {
         // checking if there is no cookie
