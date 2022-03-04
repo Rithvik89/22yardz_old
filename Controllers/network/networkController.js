@@ -31,6 +31,8 @@ async function PendingRequest(req,res,next){
      const {user_id}=req.userData
      let {celebrity}=req.body
      celebrity=parseInt(celebrity)
+     console.log(user_id)
+     console.log(celebrity)
      try{
         await RequestConnection(user_id,celebrity);
         await DropRemoveConnections(celebrity,user_id);
