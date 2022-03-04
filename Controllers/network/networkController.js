@@ -28,7 +28,7 @@ async function ViewNetworkSection(req,res,next){
 }
 
 async function PendingRequest(req,res,next){
-     const {user_id}=req.celebrity
+     const {user_id}=req.userData
      let {celebrity}=req.body
      celebrity=parseInt(celebrity)
      console.log(user_id)
