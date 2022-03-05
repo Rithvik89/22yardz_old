@@ -5,7 +5,9 @@ const {
 async function HandleProfileUpdate(req,res,next){
     const {user_id}=req.userData
     const {profile_image,bio}=req.body
-    console.log(user_id,profile_image,bio);
+    console.log(user_id);
+    console.log(profile_image);
+    console.log(bio);
     try{
        await updateProfile(user_id,profile_image,bio)
        res.send({message:"Profile Updated successfully"})
