@@ -4,3 +4,5 @@ const { HandleProfileUpdate } = require('../Controllers/profile/profileControlle
 const profileRouter = Router();
 
 profileRouter.put('/',checkAllowance,HandleProfileUpdate);
+
+module.exports=profileRouter
