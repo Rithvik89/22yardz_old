@@ -31,13 +31,13 @@ function signAccessToken ( userData ) {
         username : userData.username,
         email : userData.email_id,
         registered_date: userData.registered_date,
-        profile_image:userData.profile_image,
+        profile_image: userData.profile_image,
         bio:userData.bio
     }
     const secret = AT_DURATION.AT_SECRET_KEY;
     const options = {
         expiresIn : AT_DURATION.msformat,
-        issuer : '22yards'
+        issuer : '22yards', 
     }
 
     return createToken(payload, secret, options);
@@ -51,7 +51,7 @@ function signRefreshToken ( userData ) {
         username : userData.username,
         email : userData.email_id,
         registered_date: userData.registered_date,
-        profile_image:userData.profile_image,
+        profile_image: userData.profile_image,
         bio:userData.bio
     }
     const secret = RT_DURATION.RT_SECRET_KEY;
