@@ -11,7 +11,7 @@ function createTables(req,res){
         cric_index INT DEFAULT 0,
         profile_image VARCHAR(100),
         registered_date DATE,
-        bio TEXT,
+        bio-info TEXT,
         PRIMARY KEY (user_id)
     );`
 
