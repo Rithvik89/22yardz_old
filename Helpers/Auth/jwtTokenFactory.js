@@ -30,7 +30,9 @@ function signAccessToken ( userData ) {
         user_id : userData.user_id,
         username : userData.username,
         email : userData.email_id,
-        registered_date: userData.registered_date
+        registered_date: userData.registered_date,
+        profile_image:userData.profile_image,
+        bio:userData.bio
     }
     const secret = AT_DURATION.AT_SECRET_KEY;
     const options = {
@@ -48,7 +50,9 @@ function signRefreshToken ( userData ) {
         user_id : userData.user_id,
         username : userData.username,
         email : userData.email_id,
-        registered_date: userData.registered_date
+        registered_date: userData.registered_date,
+        profile_image:userData.profile_image,
+        bio:userData.bio
     }
     const secret = RT_DURATION.RT_SECRET_KEY;
     const options = {
