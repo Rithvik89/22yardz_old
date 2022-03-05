@@ -11,7 +11,6 @@ function routeInit(app)
     app.use(authRouter)
     app.use('/feed',feedRouter)
     app.use('/network',networkRouter);
-    // app.use('/pending-connection',networkRouter);
     app.use('/post',likeRouter)
     app.use('/post',commentRouter);
 
