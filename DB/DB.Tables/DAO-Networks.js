@@ -69,7 +69,6 @@ function DropRemoveConnections(user,enemy){
     return Exec(_query.DropRemoveConnetion,[enemy,user]);
 }
 function RemoveFromPendingConnections(fan,celebrity){
-    console.log("removing from pending connection");
    return Exec(_query.RemoveFromPendingConnections,[fan,celebrity]);
 }
 function RemoveSuggestion(user,enemy){
