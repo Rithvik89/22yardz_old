@@ -8,7 +8,7 @@ const _query={
 //defining fundtions
 
 function updateProfile(user_id,profile_image,bio){
-    return Exec(_query.ChangeProfile,[user_id,profile_image,bio]);
+    return Exec(_query.ChangeProfile,[profile_image,bio,user_id]);
 }
 
 module.exports={updateProfile};
