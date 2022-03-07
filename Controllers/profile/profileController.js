@@ -37,6 +37,7 @@ async function HandleViewProfile(req,res,next){
     console.log(user_id);
     try{
         view_user=await getuserid(view_user);
+        console.log(view_user);
         view_user=parseInt(view_user[0]);
         console.log(view_user)
        const data=await viewProfileDetails(view_user);
