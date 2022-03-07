@@ -1,6 +1,7 @@
-const {Exec,QueryAll} = require('./DB');
+const {Exec,QueryAll, Query} = require('./DB');
 
 const _query={
+    getId:`select user_id from users where username =(?);`,
     ChangeProfile:`UPDATE users SET profile_image=(?), bio=(?)
      where user_id=(?);`,
      ProfileDetails:`SELECT * from users where user_id=(?);`,
@@ -12,6 +13,10 @@ const _query={
 }
 
 //defining fundtions
+
+function getuserid(user){
+   return Query(_query.getId,[user]);
+}
 
 function updateProfile(user_id,profile_image,bio){
     return Exec(_query.ChangeProfile,[profile_image,bio,user_id]);
@@ -36,4 +41,4 @@ function checkAsFriend2(user,selected_user){
  }
 
 
-module.exports={updateProfile,ProfileDetails,viewProfileDetails,checkAsFan,checkAsFriend1,checkAsFriend2,checkAsCelebrity};
+module.exports={updateProfile,ProfileDetails,viewProfileDetails,checkAsFan,checkAsFriend1,checkAsFriend2,checkAsCelebrity,getuserid};

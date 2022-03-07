@@ -79,6 +79,7 @@ function createTables(req,res){
         enemy INT NOT NULL,
         CONSTRAINT followkey UNIQUE (user, enemy)
     );`
+    // const createNoifTableQuery=`CREATE TABLE IF NOT `
 
     mysql_pool.query(createUserTableQuery,(error,result,field)=>{
         if(error) console.log(error);
