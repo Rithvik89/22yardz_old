@@ -38,7 +38,7 @@ async function HandleViewProfile(req,res,next){
     try{
         view_user=await getuserid(view_user);
         console.log(view_user);
-        view_user=parseInt(view_user[0]);
+        view_user=parseInt(view_user.user_id);
         console.log(view_user)
        const data=await viewProfileDetails(view_user);
        const friend1=await checkAsFriend1(user_id,view_user);
