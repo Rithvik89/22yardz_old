@@ -1,6 +1,9 @@
 const {
     updateProfile,ProfileDetails,viewProfileDetails,checkAsFan,checkAsCelebrity,checkAsFriend1,checkAsFriend2,getuserid
 }=require('../../DB/DB.Tables/DAO-Profile');
+const {
+    MyConnections
+}=require('../../DB/DB.Tables/DAO-Networks');
 
 async function HandleProfileUpdate(req,res,next){
     const {user_id}=req.userData
@@ -23,7 +26,8 @@ async function HandleGetUserDetails(req,res,next){
     console.log(user_id);
     try{
         const data=await ProfileDetails(user_id);
-        res.send(data);
+        const myConnections=await MyConnections(user_id);
+        res.send({data,myConnections});
     }
     catch{
         next();
