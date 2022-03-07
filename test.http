@@ -14,8 +14,8 @@ post http://localhost:1337/login
 Content-Type: application/json
 
 {
-    "username":"rithvik345",
-    "password":"rithvik453"
+    "username":"radhika",
+    "password":"123456"
 }
 
 ###
@@ -68,6 +68,15 @@ Content-Type: application/json
 {
     "enemy":2
 }
+
+### 
+post http://localhost:1337/profile/view-profile
+Content-Type: application/json
+
+{
+    "view_user":5
+}
+
 
 
 

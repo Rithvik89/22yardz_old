@@ -23,7 +23,6 @@ function KVGet(key) {
       const db = client.db('myFirstDatabaset');
       const collection = db.collection('documents');
       const filteredDocs = await collection.find({ key }).toArray();
-      console.log('Found documents filtered by { a: 3 } =>', filteredDocs);
       resolve(1);
     } catch (err) {
       err.srvMessage = "Error while GETting redis";

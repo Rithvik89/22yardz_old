@@ -20,11 +20,7 @@ async function signAllTokens(userData) {
 
 }
 
-function authorizeRequest() {
-
-}
 
 module.exports = {
-    signAllTokens,
-    authorizeRequest
+    signAllTokens
 };
