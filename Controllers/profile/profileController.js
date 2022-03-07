@@ -33,10 +33,12 @@ async function HandleGetUserDetails(req,res,next){
 async function HandleViewProfile(req,res,next){
     const {user_id}=req.userData;
     let {view_user}=req.body;
+    console.log(view_user);
     console.log(user_id);
     try{
         view_user=await getuserid(view_user);
         view_user=parseInt(view_user);
+        console.log(view_user)
        const data=await viewProfileDetails(view_user);
        const friend1=await checkAsFriend1(user_id,view_user);
        const friend2=await checkAsFriend2(user_id,view_user);
