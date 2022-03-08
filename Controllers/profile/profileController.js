@@ -54,7 +54,7 @@ async function HandleViewProfile(req,res,next){
     try{
         view_user=await getuserid(view_user);
         view_user=parseInt(view_user.user_id);
-        const myConnections=await MyConnections(user_id);
+        const myConnections=await MyConnections(view_user);
         let connectionsList=[];
         for(let i=0;i<myConnections.length;i++){
           if(myConnections[i].celebrity!==undefined){
