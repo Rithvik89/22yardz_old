@@ -14,7 +14,7 @@ post http://localhost:1337/login
 Content-Type: application/json
 
 {
-    "username":"radhika",
+    "username":"jayanth",
     "password":"123456"
 }
 
@@ -47,7 +47,7 @@ post http://localhost:1337/network/pending-connection
 Content-Type: application/json
 
 {
-    "celebrity":1
+    "celebrity":8
 }
 
 ###
@@ -69,14 +69,32 @@ Content-Type: application/json
     "enemy":2
 }
 
+###
+get http://localhost:1337/profile/profile-details
+
 ### 
 post http://localhost:1337/profile/view-profile
 Content-Type: application/json
 
 {
-    "view_user":5
+    "view_user":"harsha"
 }
 
+###
+post http://localhost:1337/profile/del-request
+Content-Type: application/json
+
+{
+    "celebrity":6
+}
+
+###
+post http://localhost:1337/profile/del-connection
+Content-Type: application/json
+
+{
+   "other":8
+}
 
 
 

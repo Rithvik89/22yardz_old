@@ -1,5 +1,5 @@
 const {
-    updateProfile,ProfileDetails,viewProfileDetails,checkAsFan,checkAsCelebrity,checkAsFriend1,checkAsFriend2,getuserid
+    updateProfile,ProfileDetails,viewProfileDetails,checkAsFan,checkAsCelebrity,checkAsFriend1,checkAsFriend2,getuserid,deleteRequest,deleteConnection
 }=require('../../DB/DB.Tables/DAO-Profile');
 const {
     MyConnections
@@ -75,4 +75,33 @@ async function HandleViewProfile(req,res,next){
         next();
     }
 }
-module.exports={HandleProfileUpdate,HandleGetUserDetails,HandleViewProfile}
+
+async function HandleDeleteRequest(req,res,next){
+    const {user_id}=req.userData;
+    let {celebrity}=req.body;
+    celebrity=parseInt(celebrity);
+    try{
+      // Delete Request...
+      await deleteRequest(user_id,celebrity);
+      res.send({message:"Request deleted successfully"});
+    }
+    catch(err){
+      next(err);
+    }
+}
+
+async function HandleDeleteConnection(req,res,next){
+     const {user_id}=req.userData;
+     let {other} =req.body;
+     other=parseInt(other);
+     try{
+         console.log(user_id,other);
+       await deleteConnection(user_id,other);
+       res.send({message:"Connection deleted successfully"});
+    }
+     catch(err){
+        next(err);
+     }
+}
+
+module.exports={HandleProfileUpdate,HandleGetUserDetails,HandleViewProfile,HandleDeleteRequest,HandleDeleteConnection}

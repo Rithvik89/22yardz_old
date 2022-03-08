@@ -5,8 +5,6 @@ const {
   GetRecommendedNetworks,
   DropConnectionFromPending,
   MyConnections,
-  RemoveConnections,
-  DropRemoveConnections,
   RemoveFromPendingConnections,
   RemoveSuggestion
 }= require('../../DB/DB.Tables/DAO-Networks')
@@ -31,11 +29,9 @@ async function PendingRequest(req,res,next){
      const {user_id}=req.userData
      let {celebrity}=req.body
      celebrity=parseInt(celebrity)
-     console.log(user_id)
-     console.log(celebrity)
      try{
         await RequestConnection(user_id,celebrity);
-        await DropRemoveConnections(celebrity,user_id);
+      //   await DropRemoveConnections(celebrity,user_id);
         res.send({message:"request sent Successfully"})
      }
      catch(err){
@@ -52,7 +48,6 @@ async function NewConnectionMade(req,res,next){
         // Accept the connection...
        await AcceptConnection(fan,user_id);
        // drop that conection from pending table.....
-       console.log("Hello")
        await DropConnectionFromPending(fan,user_id);
        res.send({message:"Connection Made succesfully"})
     }
@@ -68,7 +63,6 @@ async function MyNetworkConnections(req,res,next){
        const payload=await verifyAccessToken(req.cookies.__AT__);
        let user_id=payload.user_id;
        user_id=parseInt(user_id);
-       console.log(user_id)
        try{
          const myConnections=await MyConnections(user_id);
          res.send({myConnections})
@@ -87,14 +81,13 @@ async function DeclineConnections(req,res,next){
       const payload=await verifyAccessToken(req.cookies.__AT__);
       let user_id=payload.user_id;
       user_id=parseInt(user_id);
-      console.log(user_id);
+
       let enemy=req.body.enemy
       enemy=parseInt(enemy)
       try{
-         const temp=await RemoveConnections(enemy,user_id);
-         console.log("finished Remove")
-         const temp1=await RemoveFromPendingConnections(enemy,user_id);
-         console.log("finished RemovePendingConneciton")
+         // await RemoveConnections(enemy,user_id);
+         await RemoveFromPendingConnections(enemy,user_id);
+         await RemoveSuggestion(enemy,user_id);
          res.send({message:"removed from collection"});
        }
        catch{
@@ -111,12 +104,10 @@ async function DeclineSuggestion(req,res,next){
       const payload=await verifyAccessToken(req.cookies.__AT__);
       let user_id=payload.user_id;
       user_id=parseInt(user_id);
-      console.log(user_id);
       let enemy=req.body.enemy
       enemy=parseInt(enemy)
       try{
-         const temp=await RemoveSuggestion(enemy,user_id);
-         console.log("finished Remove")
+         await RemoveSuggestion(enemy,user_id);
          res.send({message:"removed from collection"});
        }
        catch{
