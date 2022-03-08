@@ -4,6 +4,7 @@ const {
 const {
     MyConnections
 }=require('../../DB/DB.Tables/DAO-Networks');
+const { GetUserById } = require('../../DB/DB.Tables/DAO-users');
 
 async function HandleProfileUpdate(req,res,next){
     const {user_id}=req.userData
@@ -27,7 +28,18 @@ async function HandleGetUserDetails(req,res,next){
     try{
         const data=await ProfileDetails(user_id);
         const myConnections=await MyConnections(user_id);
-        res.send({data,myConnections});
+        let connectionsList=[];
+        for(let i=0;i<myConnections.length;i++){
+          if(myConnections[i].celebrity!==undefined){
+               let userDetails=await GetUserById(myConnections[i].celebrity);
+               connectionsList.push(userDetails);
+          }
+          else if(myConnections[i].fan!==undefined){
+            let userDetails=await GetUserById(myConnections[i].fan);
+            connectionsList.push(userDetails);
+          }
+        }
+        res.send({data,connectionsList});
     }
     catch{
         next();
@@ -41,9 +53,19 @@ async function HandleViewProfile(req,res,next){
     console.log(user_id);
     try{
         view_user=await getuserid(view_user);
-        console.log(view_user);
         view_user=parseInt(view_user.user_id);
-        console.log(view_user)
+        const myConnections=await MyConnections(user_id);
+        let connectionsList=[];
+        for(let i=0;i<myConnections.length;i++){
+          if(myConnections[i].celebrity!==undefined){
+               let userDetails=await GetUserById(myConnections[i].celebrity);
+               connectionsList.push(userDetails);
+          }
+          else if(myConnections[i].fan!==undefined){
+            let userDetails=await GetUserById(myConnections[i].fan);
+            connectionsList.push(userDetails);
+          }
+        }
        const data=await viewProfileDetails(view_user);
        const friend1=await checkAsFriend1(user_id,view_user);
        const friend2=await checkAsFriend2(user_id,view_user);
@@ -69,7 +91,7 @@ async function HandleViewProfile(req,res,next){
          is_celeb=1;
        }
        
-       res.send({data,is_fan,is_celeb,is_friend});
+       res.send({data,connectionsList,is_fan,is_celeb,is_friend});
     }
     catch{
         next();
