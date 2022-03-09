@@ -40,15 +40,14 @@ function createTables(req,res){
         comment_id INT auto_increment primary key,
         post_id INT NOT NULL,
         user_id INT NOT NULL,
-        parent_id INT,
         comment text NOT NULL,
         date timestamp default current_timestamp(),
         FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-        FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE,
-        FOREIGN KEY (parent_id) REFERENCES comments(comment_id) ON DELETE CASCADE
+        FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE
     );`
 
     const createEventsTableQuery=`CREATE TABLE IF NOT EXISTS events (
+        event_id INT auto_increment primary key,
         user_id INT NOT NULL,
         post_id INT NOT NULL,
         likes_id INT,

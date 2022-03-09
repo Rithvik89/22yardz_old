@@ -13,7 +13,9 @@ const _query = {
     getLikeId:`SELECT likes_id from likes where post_id=(?) and user_id=(?);`,
     DeleteEvent:`DELETE FROM events where post_id=(?) and user_id=(?) and likes_id=(?);`,
     GetPostLikes:`SELECT user_id from likes where post_id=(?);`,
-    GetNoofLikes:`SELECT COUNT(*) as count from likes where post_id=(?);`
+
+    GetNoofLikes:`SELECT COUNT(*) as count from likes where post_id=(?);`,
+    GetAllLikes: `SELECT * from likes where user_id=(?)`
 }
 
 function createLike(post_id,user_id){
@@ -49,6 +51,7 @@ function GetPostLikes(post_id){
     return QueryAll(_query.GetPostLikes,[post_id]);
 }
 
+
 function GetNoofLikes(post_id){
     return QueryAll(_query.GetNoofLikes,[post_id]);
 }
@@ -66,3 +69,19 @@ function GetNoofLikes(post_id){
 // }
 
 module.exports = {createLike,deleteLike,getLikes,updateLikes,addToEvents,getLikeId,deleteToEvents,GetPostLikes, GetNoofLikes};
+
+function getAllLikes(user_id) {
+    return QueryAll(_query.GetAllLikes,[user_id]);
+}
+module.exports = {
+    createLike,
+    deleteLike,
+    getLikes,
+    updateLikes,
+    addToEvents,
+    getLikeId,
+    deleteToEvents,
+    GetPostLikes,
+    getAllLikes
+};
+
