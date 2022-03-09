@@ -1,6 +1,21 @@
 const {
-    updateProfile,ProfileDetails,viewProfileDetails,checkAsFan,checkAsCelebrity,checkAsFriend1,checkAsFriend2,getuserid,deleteRequest,deleteConnection
+    updateProfile,
+    ProfileDetails,
+    viewProfileDetails,
+    checkAsFan,
+    checkAsCelebrity,
+    checkAsFriend1,
+    checkAsFriend2,
+    getuserid,
+    deleteRequest,
+    deleteConnection,
 }=require('../../DB/DB.Tables/DAO-Profile');
+const {
+  getAllLikes
+} = require('../../DB/DB.Tables/DAO-likes')
+const {
+  getAllComments
+} = require('../../DB/DB.Tables/DAO-comments');
 const {
     MyConnections
 }=require('../../DB/DB.Tables/DAO-Networks');
@@ -126,4 +141,33 @@ async function HandleDeleteConnection(req,res,next){
      }
 }
 
-module.exports={HandleProfileUpdate,HandleGetUserDetails,HandleViewProfile,HandleDeleteRequest,HandleDeleteConnection}
+async function HandleGetAllComments(req,res,next) {
+  try {
+      const {user_id} = req.userData;
+      console.log(req.userData);
+      const data = await getAllComments(user_id);
+      console.log(data);
+      res.send(data);
+  } catch (err) {
+      next(err);
+  }
+}
+async function HandleGetAllLikes(req,res,next) {
+  try {
+     const {user_id} = req.userData;
+     const data = await getAllLikes(user_id);
+     console.log(data);
+     res.send(data);
+  } catch (err) {
+     next(err);
+  }
+}
+module.exports={
+  HandleProfileUpdate,
+  HandleGetUserDetails,
+  HandleViewProfile,
+  HandleDeleteRequest,
+  HandleDeleteConnection,
+  HandleGetAllComments,
+  HandleGetAllLikes
+}
