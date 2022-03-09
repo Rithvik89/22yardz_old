@@ -1,6 +1,14 @@
 const {Router} = require('express');
 const checkAllowance = require('../Controllers/Auth/checkAllowance');
-const { HandleProfileUpdate, HandleGetUserDetails, HandleViewProfile, HandleDeleteRequest, HandleDeleteConnection } = require('../Controllers/profile/profileController');
+const { 
+    HandleProfileUpdate, 
+    HandleGetUserDetails, 
+    HandleViewProfile, 
+    HandleDeleteRequest, 
+    HandleDeleteConnection,
+    HandleGetAllComments,
+    HandleGetAllLikes
+} = require('../Controllers/profile/profileController');
 const profileRouter = Router();
 
 profileRouter.put('/',checkAllowance,HandleProfileUpdate);
@@ -8,6 +16,9 @@ profileRouter.get('/profile-details',checkAllowance,HandleGetUserDetails);
 profileRouter.post('/view-profile',checkAllowance,HandleViewProfile);
 profileRouter.post('/del-request',checkAllowance,HandleDeleteRequest);
 profileRouter.post('/del-connection',checkAllowance,HandleDeleteConnection);
+profileRouter.get('/mycomments',checkAllowance,HandleGetAllComments);
+profileRouter.get('/likes',checkAllowance,HandleGetAllLikes);
+
 module.exports=profileRouter
 
 

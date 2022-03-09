@@ -84,4 +84,8 @@ async function HandleDeleteLike(req,res,next){
         next(err);
     }
 }
-module.exports = {HandlePostLike,HandleDeleteLike,HandleGetLike};
+module.exports = {
+    HandlePostLike,
+    HandleDeleteLike,
+    HandleGetLike
+};
