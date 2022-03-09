@@ -29,9 +29,10 @@ function createTables(req,res){
     );`
 
     const createLikesTableQuery=`CREATE TABLE IF NOT EXISTS likes (
+        likes_id INT AUTO_INCREMENT,
         post_id INT NOT NULL,
         user_id INT NOT NULL,
-        CONSTRAINT likekey UNIQUE (post_id, user_id),
+        PRIMARY KEY (likes_id),
         FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE
     );`
 
@@ -50,6 +51,8 @@ function createTables(req,res){
     const createEventsTableQuery=`CREATE TABLE IF NOT EXISTS events (
         user_id INT NOT NULL,
         post_id INT NOT NULL,
+        likes_id INT,
+        comment_id INT,
         created_at date,
         FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE,
         CONSTRAINT eventskey UNIQUE (user_id, post_id)

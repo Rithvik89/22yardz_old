@@ -14,8 +14,8 @@ post http://localhost:1337/login
 Content-Type: application/json
 
 {
-    "username":"jayanth",
-    "password":"123456"
+    "username":"harsha",
+    "password":"harsha_hook"
 }
 
 ###
@@ -33,7 +33,7 @@ Content-Type: application/json
 get http://localhost:1337/feed
 
 ###
-get http://localhost:1337/feed/2
+get http://localhost:1337/feed/1
 
 
 ###
@@ -47,7 +47,7 @@ post http://localhost:1337/network/pending-connection
 Content-Type: application/json
 
 {
-    "celebrity":8
+    "celebrity":1
 }
 
 ###
@@ -55,7 +55,7 @@ post http://localhost:1337/network/new-connection
 Content-Type: application/json
 
 {
-    "fan":6
+    "fan":11
 }
 
 ###
@@ -66,7 +66,7 @@ post http://localhost:1337/network/decline-connection
 Content-Type: application/json
 
 {
-    "enemy":2
+    "enemy":9
 }
 
 ###
@@ -85,7 +85,7 @@ post http://localhost:1337/profile/del-request
 Content-Type: application/json
 
 {
-    "celebrity":6
+    "celebrity":2
 }
 
 ###
@@ -93,8 +93,28 @@ post http://localhost:1337/profile/del-connection
 Content-Type: application/json
 
 {
-   "other":8
+   "other":11
 }
+
+###
+post http://localhost:1337/post/likes
+Content-Type: application/json
+
+{
+    "post_id":1
+}
+
+###
+post http://localhost:1337/post/dislikes
+Content-Type: application/json
+
+{
+    "post_id":1
+}
+
+###
+get http://localhost:1337/post/likes/1
+
 
 
 

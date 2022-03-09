@@ -4,8 +4,8 @@ const {HandleGetLike,HandlePostLike,HandleDeleteLike} = require('../Controllers/
 
 const likeRouter = Router();
 
-likeRouter.get('/:id/likes',HandleGetLike);
-likeRouter.post('/:id/likes',HandlePostLike);
-likeRouter.delete('/:id/likes',HandleDeleteLike);
+likeRouter.get('/likes/:id',checkAllowance,HandleGetLike);
+likeRouter.post('/likes',checkAllowance,HandlePostLike);
+likeRouter.post('/dislikes',checkAllowance,HandleDeleteLike);
 
 module.exports = likeRouter;

@@ -9,11 +9,11 @@ const {
 
 async function HandleAddUserPost(req,res,next){
          const {user_id}=req.userData
-         const {content}=req.body
+         const {content,image}=req.body
          const date=new Date()
-         console.log(user_id,content,date)
+         console.log(user_id,content,date,image)
          try{
-            await createPost(user_id,content,date)
+            await createPost(user_id,content,date,image)
             res.send({message:"Post created successfully"})
          }
          catch(err){

@@ -5,7 +5,7 @@ const {
 } = require('./DB')
 
 const _query = {
-    Create: `INSERT INTO posts ( user_id ,content , created_at) VALUES (?,?,?)`,
+    Create: `INSERT INTO posts ( user_id ,content, created_at,image) VALUES (?,?,?,?)`,
     GetPostById: `SELECT * FROM posts WHERE post_id=?`,
     Delete: `DELETE FROM posts WHERE post_id=?`,
     Update: `UPDATE posts SET content=? WHERE post_id = ?`,
@@ -14,7 +14,7 @@ const _query = {
 
 // defining functions 
 
-function createPost(user_id, content, created_at) {
+function createPost(user_id, content, created_at,image) {
     return new Promise(async (resolve, reject) => {
         try {
             console.log(typeof(user_id))
@@ -23,7 +23,7 @@ function createPost(user_id, content, created_at) {
                 var error = new Error();
                 reject(error);
             }
-            await Exec(_query.Create, [user_id, content, created_at]);
+            await Exec(_query.Create, [user_id, content, created_at,image]);
             resolve()
         } catch (err) {
             reject(err);
