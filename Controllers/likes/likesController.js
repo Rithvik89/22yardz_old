@@ -7,7 +7,8 @@ const {
     addToEvents,
     getLikeId,
     deleteToEvents,
-    GetPostLikes
+    GetPostLikes,
+    GetNoofLikes
 } = require('../../DB/DB.Tables/DAO-likes');
 
 const {GetUserById} = require('../../DB/DB.Tables/DAO-users');
@@ -36,14 +37,19 @@ async function HandlePostLike(req,res,next){
     console.log(user_id,post_id);
     try{
         const date=new Date();
-        let prev_likes=await getLikes(post_id);
-        console.log(prev_likes);
-        prev_likes=parseInt(prev_likes.likes);
-        prev_likes=prev_likes+1;
-        console.log(prev_likes);
-        await updateLikes(post_id,prev_likes);
+        // let prev_likes=await getLikes(post_id);
+        // console.log(prev_likes);
+        // prev_likes=parseInt(prev_likes.likes);
+        // prev_likes=prev_likes+1;
+        // console.log(prev_likes);
+        
 
         const xyz=await createLike(post_id,user_id);
+
+        // like table no.of likes
+        const Likes=await GetNoofLikes(post_id);
+        console.log(Likes)
+         await updateLikes(post_id,Likes[0].count);
 
         let likes_id=xyz.insertId;
        

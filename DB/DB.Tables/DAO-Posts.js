@@ -9,7 +9,7 @@ const _query = {
     GetPostById: `SELECT * FROM posts WHERE post_id=?`,
     Delete: `DELETE FROM posts WHERE post_id=?`,
     Update: `UPDATE posts SET content=? WHERE post_id = ?`,
-    GetFeed: `SELECT posts.post_id, posts.user_id, posts.content, posts.created_at, posts.likes FROM posts  INNER JOIN events ON posts.post_id = events.post_id WHERE post_id in (SELECT celebrity FROM connections WHERE fan = ?)  `
+    GetFeed: `SELECT posts.post_id, posts.user_id, posts.content, posts.created_at, posts.likes FROM posts  INNER JOIN events ON posts.post_id = events.post_id WHERE post_id in (SELECT celebrity FROM connections WHERE fan = ?);`
 }
 
 // defining functions 
