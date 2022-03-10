@@ -54,7 +54,7 @@ function createTables(req,res){
         comment_id INT,
         created_at date,
         FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE,
-        CONSTRAINT eventskey UNIQUE (user_id, post_id)
+        CONSTRAINT eventskey UNIQUE (user_id, post_id,likes_id,comment_id)
     );`
 
     const createConnectionTableQuery=`CREATE TABLE IF NOT EXISTS connections (

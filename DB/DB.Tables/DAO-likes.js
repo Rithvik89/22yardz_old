@@ -55,6 +55,9 @@ function GetPostLikes(post_id){
 function GetNoofLikes(post_id){
     return QueryAll(_query.GetNoofLikes,[post_id]);
 }
+function getAllLikes(user_id) {
+    return QueryAll(_query.GetAllLikes,[user_id]);
+}
 
 //  function getLikes(post_id){
 //     return new Promise(async (resolve,reject)=>{
@@ -68,11 +71,7 @@ function GetNoofLikes(post_id){
 //     })
 // }
 
-module.exports = {createLike,deleteLike,getLikes,updateLikes,addToEvents,getLikeId,deleteToEvents,GetPostLikes, GetNoofLikes};
 
-function getAllLikes(user_id) {
-    return QueryAll(_query.GetAllLikes,[user_id]);
-}
 module.exports = {
     createLike,
     deleteLike,
@@ -82,6 +81,7 @@ module.exports = {
     getLikeId,
     deleteToEvents,
     GetPostLikes,
+    GetNoofLikes,
     getAllLikes
 };
 
