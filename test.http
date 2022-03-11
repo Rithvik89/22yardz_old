@@ -14,8 +14,8 @@ post http://localhost:1337/login
 Content-Type: application/json
 
 {
-    "username":"harsha",
-    "password":"harsha_hook"
+    "username":"radhika",
+    "password":"123456"
 }
 
 ###
@@ -33,7 +33,7 @@ Content-Type: application/json
 get http://localhost:1337/feed
 
 ###
-get http://localhost:1337/feed/1
+get http://localhost:1337/feed/3
 
 
 ###
@@ -93,7 +93,7 @@ post http://localhost:1337/profile/del-connection
 Content-Type: application/json
 
 {
-   "other":11
+   "other":6
 }
 
 ###
@@ -101,7 +101,7 @@ post http://localhost:1337/post/likes
 Content-Type: application/json
 
 {
-    "post_id":1
+    "post_id":5
 }
 
 ###
@@ -109,13 +109,18 @@ post http://localhost:1337/post/dislikes
 Content-Type: application/json
 
 {
-    "post_id":1
+    "post_id":2
 }
 
 ###
 get http://localhost:1337/post/likes/1
 
 
+###
+get http://localhost:1337/profile/likes
+
+###
+get http://localhost:1337/profile/mycomments
 
 
 

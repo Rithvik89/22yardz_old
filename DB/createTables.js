@@ -82,6 +82,13 @@ function createTables(req,res){
         CONSTRAINT followkey UNIQUE (user, enemy)
     );`
 
+    const createUnverifiedUsersTableQuery=`CREATE TABLE IF NOT EXISTS unverifiedusers (
+        username VARCHAR(15) UNIQUE NOT NULL,
+        email_id VARCHAR(150) NOT NULL,
+        OTP VARCHAR(6) NOT NULL,
+        primary key (email_id)
+    );`
+
     mysql_pool.query(createUserTableQuery,(error,result,field)=>{
         if(error) console.log(error);
     })
@@ -114,6 +121,9 @@ function createTables(req,res){
         if(error) console.log(error);
     })
     mysql_pool.query(createDeclineSuggestionsTableQuery,(error,result,field)=>{
+        if(error) console.log(error);
+    })
+    mysql_pool.query(createUnverifiedUsersTableQuery,(error,result,field)=>{
         if(error) console.log(error);
     })
 }
