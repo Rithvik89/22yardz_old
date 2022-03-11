@@ -14,7 +14,10 @@ function routeInit(app)
     app.use('/network',networkRouter);
     app.use('/post',likeRouter)
     app.use('/post',commentRouter);
-    app.use('/profile',profileRouter)
+    app.use('/profile',profileRouter);
+    app.use("/health", (req, res, next)=>{
+        res.send({status:"ok"});
+    })
 }
 
 module.exports = routeInit;
